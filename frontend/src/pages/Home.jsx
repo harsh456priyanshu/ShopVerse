@@ -4,8 +4,15 @@ import { motion } from 'framer-motion'
 import useProductStore from '../store/productStore'
 
 function Home() {
-  const { getFeaturedProducts } = useProductStore()
+  const { getFeaturedProducts, initializeProducts, products } = useProductStore()
   const featuredProducts = getFeaturedProducts()
+
+  // Initialize products on component mount
+  useEffect(() => {
+    if (products.length === 0) {
+      initializeProducts()
+    }
+  }, [])
 
   return (
     <div className="min-h-screen">
@@ -70,13 +77,13 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {featuredProducts.slice(0, 4).map((product, index) => (
               <motion.div
-                key={product.id}
+                key={product._id || product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className="card product-card bg-white overflow-hidden"
               >
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product._id || product.id}`}>
                   <div className="relative overflow-hidden">
                     <img
                       src={product.images[0]}
@@ -92,7 +99,7 @@ function Home() {
                 </Link>
                 
                 <div className="p-4">
-                  <Link to={`/product/${product.id}`}>
+                  <Link to={`/product/${product._id || product.id}`}>
                     <h3 className="font-semibold text-gray-900 mb-1 hover:text-primary-600 transition-colors">
                       {product.name}
                     </h3>
