@@ -50,7 +50,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <div className="min-h-screen bg-gray-50">
-          {/* <DebugEnv /> */}
+          {/* Debug component removed for production */}
           <Navbar />
           <main>
             <Routes>
