@@ -80,63 +80,50 @@ ecommerce-website/
 └── README.md
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start (Local Setup)
 
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or MongoDB Atlas)
-- npm or yarn
+**🎯 Want to run this project locally? We've made it super easy!**
 
-### Installation
+### 🚀 Automated Setup
 
-1. **Clone the repository**
+**Windows Users:**
+```bash
+git clone https://github.com/harsh456priyanshu/ShopVerse.git
+cd ShopVerse
+setup-local.bat
+```
+
+**Mac/Linux Users:**
+```bash
+git clone https://github.com/harsh456priyanshu/ShopVerse.git
+cd ShopVerse
+./setup-local.sh
+```
+
+### 📖 Detailed Setup Guide
+
+For step-by-step instructions, troubleshooting, and more details:
+**👉 [Read the Complete LOCAL_SETUP.md Guide](LOCAL_SETUP.md)**
+
+### ⚡ Quick Manual Setup
+
+1. **Prerequisites**: Node.js, MongoDB, Git
+2. **Clone & Install**:
    ```bash
-   git clone <repository-url>
-   cd ecommerce-website
+   git clone https://github.com/harsh456priyanshu/ShopVerse.git
+   cd ShopVerse
+   cd backend && npm install
+   cd ../frontend && npm install
    ```
+3. **Setup Environment**: Copy `.env.example` to `.env` in both folders
+4. **Run**:
+   - Terminal 1: `cd backend && npm run dev`
+   - Terminal 2: `cd frontend && npm run dev`
+5. **Access**: http://localhost:5173
 
-2. **Backend Setup**
-   ```bash
-   cd backend
-   npm install
-   ```
-
-3. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-4. **Environment Variables**
-   
-   Create a `.env` file in the backend directory:
-   ```env
-   NODE_ENV=development
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/ecommerce
-   JWT_SECRET=your-very-secure-jwt-secret-key-here
-   JWT_EXPIRE=30d
-   ```
-
-5. **Start MongoDB**
-   - For local MongoDB: `mongod`
-   - For MongoDB Atlas: Use your connection string
-
-6. **Run the Application**
-   
-   Backend (from backend directory):
-   ```bash
-   npm run dev
-   ```
-   
-   Frontend (from frontend directory):
-   ```bash
-   npm run dev
-   ```
-
-7. **Access the Application**
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:5000
+### 🔐 Default Admin Credentials
+- **Email**: admin@shopverse.com
+- **Password**: admin123
 
 ## 📱 Responsive Design
 
