@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 
 // Components
 import Navbar from './components/Navbar'
-// import DebugEnv from './components/DebugEnv'
+import DebugEnv from './components/DebugEnv'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
@@ -50,7 +50,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <div className="min-h-screen bg-gray-50">
-          {/* Debug component removed for production */}
+          {/* <DebugEnv /> */}
           <Navbar />
           <main>
             <Routes>

@@ -1,0 +1,33 @@
+{
+  "name": "ecommerce-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack ecommerce website with React frontend and Node.js backend",
+  "scripts": {
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
+    "install-all": "npm run install-frontend && npm run install-backend",
+    "build-frontend": "cd frontend && npm run build",
+    "start-backend": "cd backend && npm start",
+    "start-dev-backend": "cd backend && npm run dev",
+    "start-dev-frontend": "cd frontend && npm run dev",
+    "build": "npm run install-frontend && npm run build-frontend",
+    "start": "npm run start-backend",
+    "dev": "concurrently \"npm run start-dev-backend\" \"npm run start-dev-frontend\"",
+    "vercel-build": "cd frontend && npm install && npm run build"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "nodejs",
+    "mongodb",
+    "express"
+  ],
+  "author": "Priya",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.10.0"
+  }
+}

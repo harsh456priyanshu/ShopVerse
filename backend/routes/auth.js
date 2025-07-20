@@ -10,16 +10,34 @@ router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    // Input validation
+    if (!name || !email || !password) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'Please provide name, email, and password' 
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'Password must be at least 6 characters long' 
+      });
+    }
+
     // Check if user exists
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
     if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+      return res.status(400).json({ 
+        success: false,
+        message: 'User already exists with this email' 
+      });
     }
 
     // Create user
     const user = await User.create({
-      name,
-      email,
+      name: name.trim(),
+      email: email.toLowerCase().trim(),
       password
     });
 
@@ -38,9 +56,10 @@ router.post('/register', async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('Registration error:', error);
     res.status(500).json({ 
       success: false, 
-      message: 'Server error', 
+      message: 'Server error during registration', 
       error: error.message 
     });
   }
@@ -53,16 +72,30 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    // Input validation
+    if (!email || !password) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'Please provide email and password' 
+      });
+    }
+
     // Check if user exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.toLowerCase().trim() });
     if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ 
+        success: false,
+        message: 'Invalid email or password' 
+      });
     }
 
     // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ 
+        success: false,
+        message: 'Invalid email or password' 
+      });
     }
 
     // Generate token
@@ -80,9 +113,10 @@ router.post('/login', async (req, res) => {
       token
     });
   } catch (error) {
+    console.error('Login error:', error);
     res.status(500).json({ 
       success: false, 
-      message: 'Server error', 
+      message: 'Server error during login', 
       error: error.message 
     });
   }

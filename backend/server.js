@@ -21,10 +21,13 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   origin: [
-    process.env.FRONTEND_URL || 'http://localhost:5173',
+    process.env.FRONTEND_URL || 'https://shop-verse-p733.vercel.app',
     'https://shop-verse-p733.vercel.app',
+    'https://shop-verse-rmf6rp73u-priyanshu-rajs-projects-a1211202.vercel.app',
     'http://localhost:5173',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:3000'
   ],
   credentials: true
 }));
