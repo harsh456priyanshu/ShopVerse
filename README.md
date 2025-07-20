@@ -2,6 +2,8 @@
 
 A modern, full-stack e-commerce website built with React (Vite), Node.js, Express, MongoDB, and Tailwind CSS. This project features a responsive design optimized for PC, tablet, and mobile devices with all essential e-commerce functionality.
 
+Deployement Status :- Pending (Not deployed due to some issue )
+
 ## 🚀 Features
 
 ### Frontend Features
